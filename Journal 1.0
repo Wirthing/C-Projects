@@ -1,0 +1,42 @@
+//
+//  main.cpp
+//  Jorunal Project
+//
+//  Created by Hamish McPherson on 06/07/2016.
+//  Copyright © 2016 Hamish McPherson. All rights reserved.
+//
+
+#include <iostream>
+#include <ctime>
+#include <fstream>
+#include <string>
+using namespace std;
+
+char text[300];
+
+int main(int argc, const char * argv[]) {
+    
+    //TIME:
+    time_t rawtime;
+    struct tm * timeinfo;
+    time (&rawtime);
+    timeinfo = localtime (&rawtime);
+
+    //Main input/text:
+    cout << "Enter text into your journal." << endl;
+    cin.getline(text, sizeof(text));
+    
+    fstream the_file("journal.txt", ios::in | ios::out | ios::app);
+    if(!the_file.is_open()){    //If the file is not found displays an error message.
+        cout << "Error the file did not open." << endl;
+    } else {    //otherwise it will open, displaying a message.
+        cout << "the file succesffully opened." << endl;
+        
+        
+    the_file << endl << asctime(timeinfo) << endl << text << endl;
+    the_file.close();
+        
+    }
+    
+    return 0;
+}
