@@ -16,7 +16,7 @@ char text[300];
 
 int main(int argc, const char * argv[]) {
     
-    //TIME:
+    //Time:
     time_t rawtime;
     struct tm * timeinfo;
     time (&rawtime);
